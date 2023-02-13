@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  seq:
+    container_name: seq
+    image: datalust/seq
+    volumes:
+      - ./src/SolutionTemplate/Logs:/data
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "55000:80"

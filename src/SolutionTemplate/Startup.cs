@@ -1,3 +1,6 @@
+using Serilog;
+using SolutionTemplate.Modules;
+
 namespace SolutionTemplate;
 
 public sealed class Startup
@@ -13,11 +16,11 @@ public sealed class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        // Empty
+        services.AddCustomLogging(_configuration);
     }
 
     public void Configure(IApplicationBuilder app)
     {
-        // Empty
+        app.UseSerilogRequestLogging();
     }
 }

@@ -3,6 +3,7 @@ x86/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Ll]ogs/
 
 *.DotSettings.user
 .idea/

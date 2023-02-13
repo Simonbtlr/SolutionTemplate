@@ -1,3 +1,4 @@
+using Serilog;
 using SolutionTemplate;
 
 var hostBuilder = Host
@@ -7,7 +8,11 @@ var hostBuilder = Host
         opts.ValidateScopes = true;
         opts.ValidateOnBuild = true;
     })
-    .ConfigureWebHostDefaults(cfg => cfg.UseStartup<Startup>());
+    .ConfigureWebHostDefaults(cfg =>
+    {
+        cfg.UseStartup<Startup>();
+    })
+    .UseSerilog();
 var host = hostBuilder.Build();
 
 await host.RunAsync();
