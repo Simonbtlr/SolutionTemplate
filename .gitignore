@@ -1,5 +1,8 @@
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+*.DotSettings.user
+.idea/
