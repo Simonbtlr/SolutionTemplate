@@ -1,5 +1,7 @@
 using Serilog;
 using SolutionTemplate;
+using SolutionTemplate.Extensions;
+using SolutionTemplate.Persistence.Migrations;
 
 var hostBuilder = Host
     .CreateDefaultBuilder(args)
@@ -15,4 +17,10 @@ var hostBuilder = Host
     .UseSerilog();
 var host = hostBuilder.Build();
 
-await host.RunAsync();
+await host.RunWithMigrationAsync(
+    args,
+    typeof(Init).Assembly,
+    GetMasterConnectionString);
+
+string GetMasterConnectionString(IServiceProvider serviceProvider) =>
+    serviceProvider.GetMasterConnectionString();

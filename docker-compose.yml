@@ -10,3 +10,12 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "55000:80"
+  postgres:
+    container_name: pgsql
+    image: postgres
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+      - "POSTGRES_DB=solution-template"
+    ports:
+      - "5432:5432"

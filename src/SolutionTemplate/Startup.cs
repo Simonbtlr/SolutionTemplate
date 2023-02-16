@@ -17,6 +17,10 @@ public sealed class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCustomLogging(_configuration);
+
+        services
+            .AddPersistence()
+            ;
     }
 
     public void Configure(IApplicationBuilder app)
