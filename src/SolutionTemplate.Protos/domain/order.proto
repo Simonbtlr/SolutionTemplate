@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package solution_template.domain;
+option csharp_namespace = "SolutionTemplate.Protos.Domain";
+
+import "domain/item.proto";
+import "domain/point.proto";
+import "google/protobuf/wrappers.proto";
+
+message Order {
+  int64 id = 1;
+  google.protobuf.StringValue note = 2;
+  repeated Item items = 3;
+  repeated Point points = 4;
+}

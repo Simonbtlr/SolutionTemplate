@@ -1,0 +1,11 @@
+syntax="proto3";
+
+package solution_template.domain;
+option csharp_namespace = "SolutionTemplate.Protos.Domain";
+
+import "google/protobuf/wrappers.proto";
+
+message Item {
+  int64 id = 1;
+  google.protobuf.StringValue note = 2;
+}

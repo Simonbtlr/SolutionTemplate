@@ -1,0 +1,12 @@
+syntax="proto3";
+
+package solution_template;
+option csharp_namespace = "SolutionTemplate.Protos";
+
+import "features/add_order.proto";
+import "features/get_order.proto";
+
+service SolutionTemplateService {
+  rpc AddOrder(features.AddOrderRequest) returns (features.AddOrderResponse);
+  rpc GetOrder(features.GetOrderRequest) returns (features.GetOrderResponse);
+}

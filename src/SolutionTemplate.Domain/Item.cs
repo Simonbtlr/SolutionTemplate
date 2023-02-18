@@ -1,16 +1,18 @@
+using SolutionTemplate.Domain.Root;
+
 namespace SolutionTemplate.Domain;
 
-public sealed class Item
+public sealed class Item : Entity<long>
 {
-    public long Id { get; init; }
-
+    public string? Note { get; private set; }
+    
     private Item() { }
 
-    private Item(long id)
+    private Item(string? note)
     {
-        Id = id;
+        Note = note;
     }
 
-    public static Item Create(long id) =>
-        new(id);
+    public static Item Create(string? note) =>
+        new(note);
 }

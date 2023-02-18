@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Threading;
+using System.Threading.Tasks;
 using Dapper;
 
 namespace SolutionTemplate.Persistence.Abstractions.Utils.Extensions;
@@ -16,6 +19,16 @@ public static class ConnectionExtensions
 
         return result.AsList();
     }
+    public static async Task<TResult> QuerySingleAsync<TResult>(
+        this Connection connection,
+        string sql,
+        object? parameters = null)
+    {
+        var query = BuildCommand(sql, parameters, connection.CancellationToken, connection.Transaction);
+        var result = await connection.DbConnection.QuerySingleAsync<TResult>(query);
+
+        return result;
+    }
 
     public static async Task<int> ExecuteAsync(
         this Connection connection,
@@ -24,6 +37,15 @@ public static class ConnectionExtensions
     {
         var command = BuildCommand(sql, parameters, connection.CancellationToken, connection.Transaction);
         return await connection.DbConnection.ExecuteAsync(command);
+    }
+
+    public static async Task<TResult> ExecuteScalarAsync<TResult>(
+        this Connection connection,
+        string sql,
+        object? parameters = null)
+    {
+        var command = BuildCommand(sql, parameters, connection.CancellationToken, connection.Transaction);
+        return await connection.DbConnection.ExecuteScalarAsync<TResult>(command);
     }
 
     private static CommandDefinition BuildCommand(

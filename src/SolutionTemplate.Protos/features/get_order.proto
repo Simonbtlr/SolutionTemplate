@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package solution_template.features;
+option csharp_namespace = "SolutionTemplate.Protos.Features";
+
+import "domain/order.proto";
+
+message GetOrderRequest {
+  int64 order_id = 1;
+}
+
+message GetOrderResponse {
+  domain.Order order = 1;
+}

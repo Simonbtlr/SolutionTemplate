@@ -1,5 +1,9 @@
+using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using FluentMigrator.Runner;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using ILogger = Serilog.ILogger;
 
 namespace SolutionTemplate.Extensions;

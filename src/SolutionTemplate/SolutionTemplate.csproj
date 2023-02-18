@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.51.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
     <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
@@ -41,8 +41,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application\SolutionTemplate.Application.Abstractions\SolutionTemplate.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\Application\SolutionTemplate.Application\SolutionTemplate.Application.csproj" />
     <ProjectReference Include="..\Persistence\SolutionTemplate.Persistence.Abstractions\SolutionTemplate.Persistence.Abstractions.csproj" />
     <ProjectReference Include="..\Persistence\SolutionTemplate.Persistence\SolutionTemplate.Persistence.csproj" />
+    <ProjectReference Include="..\SolutionTemplate.Protos\SolutionTemplate.Protos.csproj" />
   </ItemGroup>
 
 </Project>

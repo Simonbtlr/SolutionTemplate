@@ -1,10 +1,12 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using SolutionTemplate.Persistence.Abstractions.Utils;
 
-namespace SolutionTemplate.Persistence;
+namespace SolutionTemplate.Persistence.Utils;
 
 public sealed class ConnectionFactory : IConnectionFactory
 {

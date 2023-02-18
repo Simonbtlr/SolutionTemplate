@@ -1,3 +1,5 @@
+using System;
+using Microsoft.Extensions.DependencyInjection;
 using SolutionTemplate.Persistence.Abstractions.Utils;
 
 namespace SolutionTemplate.Extensions;

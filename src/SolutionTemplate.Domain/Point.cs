@@ -1,17 +1,18 @@
+using SolutionTemplate.Domain.Root;
+
 namespace SolutionTemplate.Domain;
 
-public sealed class Point
+public sealed class Point : Entity<long>
 {
-    public long Id { get; init; }
-
-    // ReSharper disable once UnusedMember.Local
+    public string? Note { get; private set; }
+    
     private Point() { }
-
-    private Point(long id)
+    
+    private Point(string? note)
     {
-        Id = id;
+        Note = note;
     }
 
-    public static Point Create(long id) => 
-        new(id);
+    public static Point Create(string? note) => 
+        new(note);
 }

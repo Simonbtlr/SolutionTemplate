@@ -1,28 +1,45 @@
-﻿namespace SolutionTemplate.Domain;
+﻿using System.Collections.Generic;
+using SolutionTemplate.Domain.Root;
 
-public sealed class Order
+namespace SolutionTemplate.Domain;
+
+public sealed class Order : AggregateRoot<long>
 {
-    public long Id { get; init; }
+    public string? Note { get; private set; }
     public IReadOnlyList<Item> Items { get; private set; }
     public IReadOnlyList<Point> Points { get; private set; }
+
+    internal Order(
+        long id, 
+        string? note,
+        IReadOnlyList<Item> items,
+        IReadOnlyList<Point> points)
+    {
+        Id = id;
+        Note = note;
+        Items = items;
+        Points = points;
+    }
     
-    // ReSharper disable once UnusedMember.Local
     private Order()
     {
         Items = new List<Item>();
         Points = new List<Point>();
     }
-    
+
     private Order(
-        long id,
+        string? note,
         IReadOnlyList<Item> items,
         IReadOnlyList<Point> points)
     {
-        Id = id;
+        Note = note;
         Items = items;
         Points = points;
     }
 
-    public static Order Create(long id, List<Item> items, List<Point> points) => 
-        new(id, items, points);
+    public static Order Create(
+        string? note,
+        IReadOnlyList<Item> items,
+        IReadOnlyList<Point> points) => 
+        new(note, items, points);
 }

@@ -1,0 +1,25 @@
+syntax="proto3";
+
+package solution_template.features;
+option csharp_namespace = "SolutionTemplate.Protos.Features";
+
+import "domain/order.proto";
+import "domain/item.proto";
+import "google/protobuf/wrappers.proto";
+
+message AddOrderRequest {
+  google.protobuf.StringValue note = 1;
+  repeated Item items = 2; 
+  repeated Point points = 3;
+  
+  message Item {
+    google.protobuf.StringValue note = 1;
+  }
+  message Point {
+    google.protobuf.StringValue note = 1;
+  }
+}
+
+message AddOrderResponse {
+  domain.Order order = 1;
+}
